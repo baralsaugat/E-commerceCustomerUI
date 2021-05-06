@@ -23,6 +23,12 @@ const Header = () => {
           <FormControl type="text" placeholder="Find Products" className="mr-sm-2" />
           <Button variant="outline-info">Search</Button>
         </Form>
+        <Navbar.Text>
+        <a href=""><i class="fas fa-shopping-cart text-success"></i></a>
+        </Navbar.Text>
+        
+        <Button>Login/Sign Up</Button>
+        
       </Navbar>
     </>
   );
