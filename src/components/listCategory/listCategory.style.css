@@ -1,0 +1,19 @@
+.listCategory-style {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.card-body {
+  display: flex;
+
+  background: #422057ff;
+  color: #fcf951ff;
+  font-size: 30px;
+
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: auto;
+}

@@ -14,7 +14,11 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <LoginPage path="/login" />
+          <Route path="/login">
+            
+            <LoginPage />
+          </Route>
+
           <Route path="/signup">
             <SignUp />
           </Route>

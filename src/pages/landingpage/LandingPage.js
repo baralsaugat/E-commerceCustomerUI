@@ -1,11 +1,13 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
+import CategoryList from "../categoryList/CategoryList";
 const LandingPage = () => {
   return (
     <div>
-      <Layout></Layout>
-
-      <div>this is the landing page</div>
+      <Layout>
+        This is the landing pages
+        <CategoryList />
+      </Layout>
     </div>
   );
 };

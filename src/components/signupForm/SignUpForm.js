@@ -10,7 +10,7 @@ const SignUpForm = () => {
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control name="email" type="email" placeholder="Enter email" />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
