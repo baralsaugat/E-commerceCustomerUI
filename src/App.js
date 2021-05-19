@@ -6,6 +6,8 @@ import LandingPage from "./pages/landingpage/LandingPage";
 import LoginPage from "./pages/login/LoginPage";
 import SignUp from "./pages/signUp/SignUp";
 
+import SubCategoryList from "./pages/subCategoryList/SubCatgoryList";
+
 function App() {
   return (
     <div className="App">
@@ -15,8 +17,10 @@ function App() {
             <LandingPage />
           </Route>
           <Route path="/login">
-            
             <LoginPage />
+          </Route>
+          <Route path="/sub-category/:slug">
+            <SubCategoryList />
           </Route>
 
           <Route path="/signup">

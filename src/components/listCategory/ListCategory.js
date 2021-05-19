@@ -3,17 +3,20 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Card } from "react-bootstrap";
-import { fetchAllCategorySuccess } from "../../pages/categoryList/CategorySlice";
+// import { fetchAllCategorySuccess } from "../../pages/categoryList/CategorySlice";
 
 import { fetchCategory } from "../../pages/categoryList/CategoryAction";
 
 import "./listCategory.style.css";
+import { useHistory } from "react-router-dom";
 
 const ListCategory = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
+
   const { categoryList } = useSelector((state) => state.category);
-  console.log(categoryList);
-  const [showListCategory, setShowListCategory] = useState("");
+
+  // const [showListCategory, setShowListCategory] = useState("");
 
   useEffect(() => {
     dispatch(fetchCategory());
@@ -23,12 +26,18 @@ const ListCategory = () => {
 
   // const handleOnClick = () => {};
 
+  const parentCategoryList = categoryList.filter((row) => !row.parentCat);
+  // const childCategoryList = categoryList.filter((row))
+
   return (
     <div className="listCategory-style">
-      {categoryList.map((row, i) => (
+      {parentCategoryList.map((row, i) => (
         <a href="">
           <Card classname="card-body">
-            <Card.Body key={i} >
+            <Card.Body
+              key={i}
+              onClick={() => history.push(`/sub-category/${row.slug}`)}
+            >
               {" "}
               {row.name}
             </Card.Body>
