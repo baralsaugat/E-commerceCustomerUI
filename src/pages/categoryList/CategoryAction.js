@@ -7,6 +7,8 @@ export const fetchCategory = () => async (dispatch) => {
     const result = await getCategories();
 
     dispatch(fetchAllCategorySuccess(result));
+ 
+    
   } catch (error) {
     const err = {
       status: "error",

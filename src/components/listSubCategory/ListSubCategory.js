@@ -12,12 +12,14 @@ const ListSubCategory = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const { categoryList } = useSelector((state) => state.category);
-  console.log(categoryList);
+  const {productList} = useSelector(state => state.product)
+
 
   useEffect(() => {
     dispatch(fetchCategory());
   }, []);
-  console.log(slug);
+  
+  
 
   const childCategoryList = categoryList.filter((row) => row.parentCat);
 
@@ -26,14 +28,26 @@ const ListSubCategory = () => {
   const newCatList = childCategoryList.filter(
     (row) => row.parentCat === slugObj._id
   );
+  
+
+
 
   return (
+    <div>
     <div className="listsubcategory-style">
-      {newCatList.map((row, i) => (
+
+      <a href="">{newCatList.map((row, i) => (
+      
         <Card>
-          <Card.Body key={i}>{row.name}</Card.Body>
+          <Card.Body key={i} >{row.name}</Card.Body>
         </Card>
-      ))}
+      ))}</a>
+      
+    </div>
+
+    <div>
+      
+    </div>
     </div>
   );
 };

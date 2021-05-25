@@ -1,4 +1,9 @@
 .signupForm-style {
-  width: 100px;
-  background: black;
+  margin: 30px;
+  width: fit-content;
+  height: auto;
+}
+
+.signupForm-style > Form {
+  background: rgb(49, 194, 126);
 }

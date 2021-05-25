@@ -1,59 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import "./signUp.style.css";
 
 import { Form, Button, Col, Card } from "react-bootstrap";
+import { addAllUserSuccess } from "../../pages/signUp/SignUpSlice";
+
+import { addAllUsers } from "../../pages/signUp/SignUpAction";
+
+const initialState = {
+  fName: "",
+  lName: "",
+  email: "",
+  password: "",
+};
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const [signUp, setSignUp] = useState(initialState);
+
+  const { isLoading, status, message, signUpList } = useSelector(
+    (state) => state.signup
+  );
+
+  console.log(signUp);
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setSignUp({ ...signUp, [name]: value });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(addAllUsers(signUp));
+  };
+
   return (
-    <div className= "signupForm-style">
-      <Card>
+    <div>
+      <Card className="signupForm-style">
         <Form className="p-4">
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                name="fName"
+                type="string"
+                value={signUp.fName}
+                onChange={handleOnChange}
+                placeholder="Enter First Name"
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                name="lName"
+                value={signUp.lName}
+                type="String"
+                placeholder="Enter Last Name"
+                onChange={handleOnChange}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control name="email" type="email" placeholder="Enter email" />
+              <Form.Control
+                name="email"
+                value={signUp.email}
+                type="email"
+                placeholder="Enter email"
+                onChange={handleOnChange}
+              />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                name="password"
+                value={signUp.password}
+                type="password"
+                placeholder="Password"
+                onChange={handleOnChange}
+              />
             </Form.Group>
           </Form.Row>
 
-          <Form.Group controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
-            <Form.Control placeholder="1234 Main St" />
-          </Form.Group>
-
-          <Form.Group controlId="formGridAddress2">
-            <Form.Label>Address 2</Form.Label>
-            <Form.Control placeholder="Apartment, studio, or floor" />
-          </Form.Group>
-
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
-              <Form.Control as="select" defaultValue="Choose...">
-                <option>Choose...</option>
-                <option>...</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control />
-            </Form.Group>
-          </Form.Row>
-
-          <Form.Group id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={handleOnSubmit}>
             Submit
           </Button>
         </Form>

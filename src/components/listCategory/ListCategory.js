@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Card } from "react-bootstrap";
+import { Card, Link } from "react-bootstrap";
 // import { fetchAllCategorySuccess } from "../../pages/categoryList/CategorySlice";
 
 import { fetchCategory } from "../../pages/categoryList/CategoryAction";
@@ -32,12 +32,9 @@ const ListCategory = () => {
   return (
     <div className="listCategory-style">
       {parentCategoryList.map((row, i) => (
-        <a href="">
+        <a href={`/category/${row.slug}`}>
           <Card classname="card-body">
-            <Card.Body
-              key={i}
-              onClick={() => history.push(`/sub-category/${row.slug}`)}
-            >
+            <Card.Body key={i}>
               {" "}
               {row.name}
             </Card.Body>
