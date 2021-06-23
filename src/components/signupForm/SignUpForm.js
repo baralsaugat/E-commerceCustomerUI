@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Spinner, Alert } from "react-bootstrap";
 import "./signUp.style.css";
-
 import { Form, Button, Col, Card } from "react-bootstrap";
-import { addAllUserSuccess } from "../../pages/signUp/SignUpSlice";
 
 import { addAllUsers } from "../../pages/signUp/SignUpAction";
 
@@ -39,6 +38,13 @@ const SignUpForm = () => {
 
   return (
     <div>
+      {isLoading && <Spinner variant="primary" animation="border" />}
+
+      {message && (
+        <Alert variant={status === "success" ? "success" : "danger"}>
+          {message}
+        </Alert>
+      )}
       <Card className="signupForm-style">
         <Form className="p-4">
           <Form.Row>

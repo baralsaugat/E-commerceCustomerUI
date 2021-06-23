@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -8,9 +9,9 @@ import {
   Button,
 } from "react-bootstrap";
 
-
 const Header = () => {
- 
+  const history = useHistory();
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -33,7 +34,7 @@ const Header = () => {
           </a>
         </Navbar.Text>
 
-        <Button>Login/Sign Up</Button>
+        <Button onClick={() => history.push("/login")}>Login/Sign Up</Button>
       </Navbar>
     </>
   );

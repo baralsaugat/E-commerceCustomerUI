@@ -17,6 +17,8 @@ const signUpSlice = createSlice({
     addAllUserSuccess: (state, { payload }) => {
       state.isLoading = false;
       state.signUpList = payload.result;
+      state.status = payload.status;
+      state.message = payload.message;
     },
   },
 });
